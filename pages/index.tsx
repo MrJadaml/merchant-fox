@@ -2,10 +2,10 @@ import React from 'react'
 import { GetStaticProps } from 'next'
 import prisma from '../lib/prisma'
 import Layout from '../components/Layout'
-import Business, { BusinessProps } from '../components/Business'
+import Business, { BusinessProps } from '../components/Business/Business'
 
 export const getStaticProps: GetStaticProps = async () => {
-    const businessess = await prisma.business.findMany()
+    const businessess = await prisma.user.findMany()
 
     return {
       props: { businessess },

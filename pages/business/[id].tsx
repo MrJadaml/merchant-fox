@@ -1,7 +1,7 @@
 import React from 'react'
 import { GetServerSideProps } from 'next'
 import Layout from '../../components/Layout'
-import { BusinessProps } from '../../components/Business'
+import { BusinessProps } from '../../components/Business/Business'
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   return {

@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import cn from 'classnames'
 import css from './navItem.module.scss'
@@ -9,6 +10,7 @@ interface NavItemProps {
   icon: IconDefinition
   key: string
   label: string
+  route: string
 }
 
 export const NavItem: React.FC<NavItemProps> = ({
@@ -16,6 +18,7 @@ export const NavItem: React.FC<NavItemProps> = ({
   expanded,
   icon,
   label,
+  route,
 }) => {
   const ariaLabel = expanded ? `${label} - Expanded` : label
 
@@ -28,22 +31,24 @@ export const NavItem: React.FC<NavItemProps> = ({
       aria-label={ariaLabel}
       role="listitem"
     >
-      <div className={css.iconContainer}>
-        <FontAwesomeIcon
-          icon={icon}
-          className="icon"
-          aria-hidden="true"
-        />
-      </div>
+      <Link href={route}>
+        <div className={css.iconContainer}>
+          <FontAwesomeIcon
+            icon={icon}
+            className="icon"
+            aria-hidden="true"
+          />
+        </div>
 
-      <div
-        className={cn('non', {
-          [css.label]: expanded,
-          [css.tooltip]: !expanded,
-        })}
-       >
-        {label}
-      </div>
+        <div
+          className={cn('non', {
+            [css.label]: expanded,
+            [css.tooltip]: !expanded,
+          })}
+         >
+          {label}
+        </div>
+      </Link>
     </li>
   )
 }

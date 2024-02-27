@@ -20,10 +20,10 @@ import css from './navbar.module.scss'
 import { NavItem } from './nav-item'
 
 const sampleNavItems = [
-  { icon: faHome, label: 'Home' },
-  { icon: faUser, label: 'Profile' },
-  { icon: faEnvelope, label: 'Messages' },
-  { icon: faCog, label: 'Settings' },
+  { icon: faHome, label: 'Home', route: '/' },
+  { icon: faUser, label: 'Profile', route: '/profile' },
+  { icon: faEnvelope, label: 'Messages', route: '/messages' },
+  { icon: faCog, label: 'Settings', route: '/settings' },
 ]
 
 export const Navbar = () => {
@@ -52,7 +52,7 @@ export const Navbar = () => {
           <FontAwesomeIcon
             className="icon"
             icon={faBars}
-            title="menu icon"
+            titleId="menu icon"
           />
         </button>
       </header>
@@ -61,11 +61,12 @@ export const Navbar = () => {
         className={css.navList}
         role="list"
       >
-        {sampleNavItems.map(({ icon, label}, idx) => 
+        {sampleNavItems.map(({ icon, label, route}, idx) => 
           <NavItem
             key={label}
             icon={icon}
             label={label}
+            route={route}
             active={idx === activeIndex}
             expanded={expanded}
           />
@@ -97,7 +98,7 @@ export const Navbar = () => {
           <FontAwesomeIcon
             className="icon"
             icon={faSignOutAlt}
-            title="logout icon"
+            titleId="logout icon"
           />
         </div>
       </footer>

@@ -1,5 +1,6 @@
+import Link from 'next/link'
 import '../styles/globals.scss'
-import styles from './page.module.css'
+import css from './page.module.css'
 import prisma from '../../lib/prisma'
 
 async function getBusinesses() {
@@ -10,8 +11,8 @@ export default async function Home() {
   const businesses = await getBusinesses()
 
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
+    <main className={css.main}>
+      <div className={css.description}>
         {businesses.map(business => (
           <div key={business.id}>
             <h3>{business.name}</h3>
@@ -19,57 +20,17 @@ export default async function Home() {
         ))}
       </div>
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
+      <footer className={css.grid}>
+        <Link
+          href="/your/shops/onboarding"
+          className={css.footerLink}
         >
           <h2>
-            Docs <span>-&gt;</span>
+            Sell on Merchant Fox <span>-&gt;</span>
           </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+          <p>Get started by setting up your digital store on Merchant Fox</p>
+        </Link>
+      </footer>
     </main>
   )
 }

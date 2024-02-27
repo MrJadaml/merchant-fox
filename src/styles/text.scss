@@ -14,3 +14,9 @@ $semiBoldWeight: 600;
   font-size: $regularFontSize;
 }
 
+
+@mixin medium-text {
+    font-weight: 300;
+    font-size: $mediumFontSize;
+}
+

@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
-import { Navbar } from '@/components/navbar'
-import css from './layout.module.scss'
 import { getServerSession } from 'next-auth'
 import SessionProvider from '../components/session-provider'
+import { Navbar } from '@/components/navbar'
+import '../styles/globals.scss'
+import css from './layout.module.scss'
 
 export const metadata: Metadata = {
   title: 'Create Next App',

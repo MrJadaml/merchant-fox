@@ -1,0 +1,40 @@
+@import '../../styles/colors.scss';
+@import '../../styles/z-scale.scss';
+@import '../../styles/text.scss';
+
+.wrapper {
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  border: 1px solid $tertiary;
+  padding: 10px 25px 10px 10px;
+  margin-bottom: 10px;
+  text-align: right;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0;
+
+  @include medium-text;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px $secondary;
+    border: 1px solid $secondary;
+  }
+}
+
+.input::placeholder {
+  text-align: right;
+  color: $tertiary;
+}
+
+.label {
+  color: $darkGrey;
+  position: absolute;
+  z-index: $zIndex1-Input-label;
+  top: 14px;
+  left: 11px;
+}

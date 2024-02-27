@@ -2,7 +2,7 @@ import React from 'react';
 import cn from 'classnames'
 import css from './button.module.scss'
 
-export enum types {
+export enum styles {
   PRIMARY = 'primary',
   SECONDARY = 'secondary',
   TERTIARY = 'tertiary',
@@ -12,33 +12,35 @@ export enum types {
 interface ButtonProps {
   className?: string
   disabled?: boolean
-  type?: types
+  style?: styles
   backgroundColor?: string
   large?: boolean
   label: string
-  onClick: () => void
+  onClick?: () => void
+  type?: "button" | "reset" | "submit" | undefined
 }
 
 export const Button = ({
   backgroundColor,
   className,
   disabled = false,
-  type = types.PRIMARY,
+  style = styles.PRIMARY,
   label,
   large = false,
+  type = "button",
   ...props
 }: ButtonProps) => {
   return (
     <button
-      type="button"
+      type={type}
       className={cn(css.button, {
-        [css.primary]: type === 'primary',
-        [css.secondary]: type === 'secondary',
-        [css.tertiary]: type === 'tertiary',
-        [css.disabled]: type === 'disabled',
+        [css.primary]: style === 'primary',
+        [css.secondary]: style === 'secondary',
+        [css.tertiary]: style === 'tertiary',
+        [css.disabled]: style === 'disabled',
         [css.large]: large, 
       })}
-      disabled={type === 'disabled'}
+      disabled={style === 'disabled'}
       {...props}
     >
       {label}
